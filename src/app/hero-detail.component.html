@@ -1,0 +1,17 @@
+<div *ngIf="hero">
+  <h2>{{hero.name}} details!</h2>
+  <div>
+    <label>id: </label>{{hero.id}}
+  </div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="hero.name" placeholder="name">
+    <!--[(ngModel)]
+     3、为了同时显示和修改英雄的名字，我们还使用了内置的ngModel指令，往<input>元素上添加了双向数据绑定。
+     ngModel指令将这些修改传播到每一个对hero.name的其它绑定。在使用ngModel做双向数据绑定之前，得先导入FormsModule， 把它加入 Angular 模块的imports列表
+     3.1、[(ngModel)]语法只能设置一个数据绑定属性。 如果需要做更多或不同的事情，就得自己用它的展开形式。
+     3.2、比如强制让输入值变成大写形式： <input [ngModel]="currentHero.firstName"  (ngModelChange)="setUpperCaseFirstName($event)">
+    -->
+  </div>
+  <button (click)="goBack()" >Back</button>
+</div>

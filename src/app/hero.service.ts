@@ -9,7 +9,7 @@
  例如，SpecialSuperHeroService服务应该被定义在special-super-hero.service.ts文件中。
 */
 
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';  // 服务必备
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 
@@ -27,4 +27,15 @@ export class HeroService {
     return Promise.resolve(HEROES);
   }
 // 导入HEROES常量，并在getHeroes方法中返回它
+//  慢一点（模仿用http加载数据）
+  getHeroesSlowly(): Promise<Hero[]> {
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(this.getHeroes()), 2000);
+    });
+  }
+  getHero(id: Number): Promise<Hero> {   // 添加一个getHero方法，用来通过id从getHeros过滤英雄列表：
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
+  }
 }

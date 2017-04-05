@@ -1,0 +1,12 @@
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+  <!--
+  绑定了一个包含链接参数数组的表达式。 该数组有两个元素，目标路由和一个用来设置当前英雄的 id 值的路由参数。
+  这两个数组项与之前在app.module.ts添加的参数化的英雄详情路由定义中的 path 和 :id 对应。
+  -->
+  <a *ngFor="let hero of heroes" class="col-1-4" [routerLink]="['/detail',hero.id]">
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>
