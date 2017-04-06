@@ -50,4 +50,8 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {  // goBack方法，它使用之前注入的Location服务， 利用浏览器的历史堆栈，导航到上一步。
     this.location.back();
   }
+  save(): void {  // save方法使用 hero 服务的update方法来持久化对英雄名字的修改
+    this.heroService.update( this.hero )
+      .then(() => this.goBack());
+  }
 }

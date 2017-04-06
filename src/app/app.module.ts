@@ -1,6 +1,17 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+/*注册 HTTP 服务
+ 要能从本应用的任何地方访问这些服务，就要把HttpModule添加到AppModule的imports列表中。
+ */
+import { HttpModule } from '@angular/http';
+
+// 引入路由模块
+import { AppRoutingModule } from './app-routing.module';
+
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }  from './app.component';
 import { HeroesComponent } from './heroes.component';
@@ -12,15 +23,17 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { DashboardComponent } from './dashboard.component';
 // 使用 HeroService 服务
 import { HeroService } from './hero.service';
-// 引入路由模块
-import { AppRoutingModule } from './app-routing.module';
+
+
 
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),  // InMemoryWebApiModule将Http客户端默认的后端服务 — 这是一个辅助服务，负责与远程服务器对话 — 替换成了内存 Web API服务：
   ],
   /*
    添加HeroDetailComponent到NgModule装饰器中的declarations(声明)数组。
