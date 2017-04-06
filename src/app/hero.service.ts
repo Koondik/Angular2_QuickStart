@@ -31,6 +31,7 @@ import { Hero } from './hero';
 @Injectable()  // 不要忘了写圆括号！如果忘了写，就会导致一个很难诊断的错误。
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
+  private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http ) { }
 //  2.添加一个名叫getHeros的桩方法。 HeroService的getHeroes方法改写为返回承诺的形式(异步)：
   getHeroes(): Promise<Hero[]> {
@@ -45,8 +46,7 @@ export class HeroService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-  private headers = new Headers({'Content-Type': 'application/json'});
-  update(hero: Hero): Promise<Hero> {
+  update(hero: Hero): Promise<Hero> {  // 修改
     const url = `${this.heroesUrl}/${hero.id}`;
     return this.http
       .put(url, JSON.stringify(hero), {headers: this.headers})
@@ -72,6 +72,20 @@ export class HeroService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Hero)
+      .catch(this.handleError);
+  }
+  create(name: string): Promise<Hero> {  // 添加
+    return this.http
+      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+  delete(id: number): Promise<void> {  // 删除
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
       .catch(this.handleError);
   }
 }

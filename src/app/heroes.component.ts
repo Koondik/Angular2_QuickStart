@@ -62,6 +62,24 @@ export class HeroesComponent implements OnInit { // 在 Angular 的ngOnInit生�
  2.在构造函数中注入router（与HeroService一起）
  3.实现gotoDetail，调用router.navigate方法
 */
+  add(name: string): void {   // 添加方法
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
+  delete(hero: Hero): void { // 删除方法
+    this.heroService
+      .delete(hero.id)
+      .then(() => {
+        this.heroes = this.heroes.filter(h => h !== hero); // 过滤掉删除的英雄对象，返回不为删除的英雄列表
+        if (this.selectedHero === hero) { this.selectedHero = null; }
+      //  从数组中移除了被删除的英雄，如果删除的是正选中的英雄，还会清空选择。
+      });
+  }
 }
 
 

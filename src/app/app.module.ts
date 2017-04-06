@@ -15,11 +15,12 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }  from './app.component';
 import { HeroesComponent } from './heroes.component';
+import { HeroDetailComponent } from './hero-detail.component';
 /*更新 AppModule
  在 Angular 模块中声明该应用所需的指令。
  只要把这些指令列在NgModule装饰器的declarations数组中就可以了。
 */
-import { HeroDetailComponent } from './hero-detail.component';
+
 import { DashboardComponent } from './dashboard.component';
 // 使用 HeroService 服务
 import { HeroService } from './hero.service';
