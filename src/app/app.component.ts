@@ -15,8 +15,12 @@ import { Component } from '@angular/core';
             它将告诉路由器，当用户点击这个链接时，应该导航到哪里。
             -->
             <nav>
-              <a routerLink="/dashboard">Dashboard</a>
-              <a routerLink="/heroes">Heroes</a>
+              <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+              <!--
+              routerLinkActive指令
+              Angular路由器提供了routerLinkActive指令，我们可以用它来为匹配了活动路由的 HTML 导航元素自动添加一个 CSS 类。
+              -->
+              <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
             </nav>
             <!--router-outlet
             标签添加到模板的底部。 RouterOutlet是RouterModule提供的指令之一。 
@@ -24,8 +28,8 @@ import { Component } from '@angular/core';
             -->
             <router-outlet></router-outlet> 
             
-            `
-
+            `,
+  styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
   title = `Tour of Heroes`;

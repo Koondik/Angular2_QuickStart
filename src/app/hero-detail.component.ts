@@ -22,6 +22,7 @@ import 'rxjs/add/operator/switchMap';  // 导入switchMap运算符，之后会�
   // moduleId: module.id,
   selector: 'my-hero-detail',
   templateUrl: './hero-detail.component.html',
+  styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
   /*

@@ -1,0 +1,42 @@
+<!--
+            2、我们使用 ES2015 的模板字符串写了一个多行模板，使我们的模板更具可读性。
+           -->
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+    <!--ngFor:
+     ngFor的*前缀表示<li>及其子元素组成了一个主控模板。
+     ngFor指令在AppComponent.heroes属性返回的heroes数组上迭代，并输出此模板的实例。
+     引号中赋值给ngFor的那段文本表示“从heroes数组中取出每个英雄，存入一个局部的hero变量，并让它在相应的模板实例中可用”。
+     hero前的let关键字表示hero是一个模板输入变量。 在模板中，我们可以引用这个变量来访问一位英雄的属性。
+    -->
+
+    <!--事件绑定：(click)
+    圆括号标识<li>元素上的click事件是绑定的目标。
+    等号右边的表达式调用AppComponent的onSelect()方法，并把模板输入变量hero作为参数传进去。
+    它是我们前面在ngFor中定义的那个hero变量。-->
+
+    <!--属性绑定的语法：[class.selected]
+    在class上为selected类添加一个属性绑定。我们把绑定表达式设置为selectedHero和hero的比较结果。
+    模板中的class.selected包裹在方括号中。 这就是属性绑定的语法，实现从数据源(hero === selectedHero表达式)到class属性的单向数据流动。-->
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <!--
+     1、我们的《英雄指南》使用双大括号插值表达式(单向数据绑定的一种形式)来显示应用的标题和Hero对象的属性。
+    -->
+  </li>
+</ul>
+
+<!--刚刚从模板中移除英雄详情的地方， 放上用来表示HeroDetailComponent组件的元素标签。-->
+<!--<my-hero-detail [hero]="selectedHero"></my-hero-detail>-->
+<!--把该组件的selectedHero属性绑定到HeroDetailComponent组件的hero属性上,hero是属性绑定的目标 — 它位于等号 (=) 左边方括号中。-->
+
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+    <!--使用大写管道格式化
+    管道擅长做下列工作：格式化字符串、金额、日期和其它显示数据。 Angular 自带了一些管道，我们也可以写自己的管道。
+    -->
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+

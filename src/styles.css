@@ -1,5 +1,25 @@
+/* Master Styles */
+/*应用的全局样式
+当我们把样式添加到组件中时，我们假定组件所需的一切 — HTML、CSS、程序代码 — 都在紧邻的地方。 这样，无论是把它们打包在一起还是在别的组件中复用它都会很容易。*/
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+/* . . . */
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
 }
