@@ -36,7 +36,7 @@ export class HeroService {
 //  2.添加一个名叫getHeros的桩方法。 HeroService的getHeroes方法改写为返回承诺的形式(异步)：
   getHeroes(): Promise<Hero[]> {
     // return Promise.resolve(HEROES);
-    return this.http.get(this.heroesUrl)
+    return this.http.get(this.heroesUrl)   // Http服务中的每个方法都返回一个 HTTP Response对象的Observable实例。
       .toPromise()    // Angular 的http.get返回一个 RxJS 的Observable对象。 Observable（可观察对象）是一个管理异步数据流的强力方式。利用toPromise操作符把Observable直接转换成Promise对象
       .then( response => response.json().data as Hero[])
       // json方法返回的对象只有一个data属性。 这个data属性保存了英雄数组，这个数组才是调用者真正想要的。 所以我们取得这个数组，并且把它作为承诺的值进行解析。
@@ -89,3 +89,5 @@ export class HeroService {
       .catch(this.handleError);
   }
 }
+
+

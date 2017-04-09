@@ -1,0 +1,16 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <!--当用户在搜索框中输入时，一个 keyup 事件绑定会调用该组件的search方法，并传入新的搜索框的值。-->
+  <div>
+    <div *ngFor="let hero of heroes | async"
+      (click)="gotoDetail(hero)" class="search-result" >
+      <!--注意：
+      接下来我们看到heroes属性现在是英雄列表的Observable对象，而不再只是英雄数组。
+      *ngFor不能用可观察对象做任何事，除非我们在它后面跟一个async pipe (AsyncPipe)。
+      这个async管道会订阅到这个可观察对象，并且为*ngFor生成一个英雄数组。
+      -->
+      {{hero.name}}
+    </div>
+  </div>
+</div>

@@ -22,6 +22,7 @@ import { HeroDetailComponent } from './hero-detail.component';
 */
 
 import { DashboardComponent } from './dashboard.component';
+import { HeroSearchComponent } from './hero-search.component';
 // 使用 HeroService 服务
 import { HeroService } from './hero.service';
 
@@ -44,7 +45,8 @@ import { HeroService } from './hero.service';
     AppComponent ,
     HeroesComponent ,
     HeroDetailComponent ,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
   /*
    注册一个HeroService提供商，来告诉注入器如何创建HeroService

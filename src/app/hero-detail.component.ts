@@ -39,13 +39,13 @@ export class HeroDetailComponent implements OnInit {
   ) {};
   /*
    注意switchMap运算符如何将可观察的路由参数中的 id 映射到一个新的Observable， 即HeroService.getHero方法的结果。
-   如果用户在 getHero 请求执行的过程中再次导航这个组件，switchMap 再次调用HeroService.getHero之前， 会取消之前的请求。
+   如果用户在 getHero 请求执行的过程中再次导航这个组件，switchMap 再次调用HeroService.getHero之前， 会取消之前的请求。  它会取消并丢弃以前的搜索可观察对象，只保留最近的。
    英雄的id是数字，而路由参数的值总是字符串。 所以我们需要通过 JavaScript 的 (+) 操作符把路由参数的值转成数字。
   */
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params ) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.hero = hero);
+      .subscribe(hero => this.hero = hero);   // subscribe???  https://zhuanlan.zhihu.com/p/25467376
   }
   goBack(): void {  // goBack方法，它使用之前注入的Location服务， 利用浏览器的历史堆栈，导航到上一步。
     this.location.back();
