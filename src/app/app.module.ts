@@ -26,7 +26,7 @@ import { HeroSearchComponent } from './hero-search.component';
 // 使用 HeroService 服务
 import { HeroService } from './hero.service';
 
-
+import { HighlightDirective  } from './attribute-directives'; // 引用自定义指令
 
 
 @NgModule({
@@ -46,14 +46,15 @@ import { HeroService } from './hero.service';
     HeroesComponent ,
     HeroDetailComponent ,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HighlightDirective
   ],
   /*
    注册一个HeroService提供商，来告诉注入器如何创建HeroService
    在@Component组件的元数据底部添加providers数组属性
    providers数组告诉 Angular，当它创建新的AppComponent组件时，也要创建一个HeroService的新实例。
    */
-  providers: [HeroService], // 把HeroService定义为AppComponent的一个提供商,应用中的所有组件都可以使用它
+  providers: [HeroService], // 把HeroService定义为AppComponent的一个提供商,应用中的所有组件都可以使用它  这是在告诉 Angular：该组件的构造函数需要一个HeroService服务，这样组件就可以从服务中获得英雄数据。
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

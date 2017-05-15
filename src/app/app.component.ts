@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-            <h1>{{title}}</h1>    
+            <h1 myHighlight>{{title}}</h1>    
             <!--<my-heroes></my-heroes>-->
             
             <!--路由-->
