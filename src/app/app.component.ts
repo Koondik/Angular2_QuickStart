@@ -5,7 +5,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-            <h1 myHighlight>{{title}}</h1>    
+            <h1>{{title}}</h1>
+            <h4>Pick a highlight color</h4>
+            <div>
+              <input type="radio" name="colors" (click)="color='lightgreen'">Green
+              <input type="radio" name="colors" (click)="color='yellow'">Yellow
+              <input type="radio" name="colors" (click)="color='cyan'">Cyan
+            </div>
+            <p myHighlight highlightColor="color">这里不是别color,所以系统默认使用red</p><!--错误示范-->
+            <!--<p myHighlight [highlightColor]="color">Highlighted in orange</p>-->
+            <p [myHighlight]="color" defaultColor="violet">Highlighted</p>
             <!--<my-heroes></my-heroes>-->
             
             <!--路由-->
@@ -33,4 +42,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = `Tour of Heroes`;
+  color: string;
 }

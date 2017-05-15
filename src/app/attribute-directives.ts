@@ -12,10 +12,13 @@ import { Directive , ElementRef , HostListener , Input } from '@angular/core'; /
 */
 
 export class HighlightDirective {
+  @Input('myHighlight') highlightColor: string; // 把highlightColor属性添加到指令类中,同时对highlightColor在dom中定义了别名myHighlight
+  @Input() defaultColor: string ;
   constructor(private el: ElementRef) {}
   // ElementRef注入到指令构造函数中。这样代码就可以访问 DOM 元素了。 Input将数据从绑定表达式传达到指令中。
   @HostListener('mouseenter') onMouseEnter() { // @HostListener装饰器引用属性型指令的宿主元素，在这个例子中就是<p>。
-    this.highlight('yellow');
+    // this.highlight(this.myHighlight);
+    this.highlight(this.highlightColor || this.defaultColor || 'red'); // 如果有人忘了绑定到highlightColor，那就用红色进行高亮
   }
 
   @HostListener('mouseleave') onMouseLeave() {
