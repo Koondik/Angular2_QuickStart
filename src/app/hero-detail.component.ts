@@ -28,7 +28,7 @@ export class HeroDetailComponent implements OnInit {
   /*
    让一个组件接收输入
    把hero声明成输入属性。
-   这里我们采用首选的方式：使用我们前面导入的@Input装饰器向hero属性添加注解。
+   这里我们采用首选的方式：使用我们前面导入的@Input装饰器向hero属性添加注解。元数据装饰器用类似的方式来指导 Angular 的行为。 例如@Injectable、@Input和@Output等是一些最常用的装饰器。
   */
   @Input() hero: Hero;
 
