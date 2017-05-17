@@ -25,8 +25,9 @@ import { DashboardComponent } from './dashboard.component';
 import { HeroSearchComponent } from './hero-search.component';
 // 使用 HeroService 服务
 import { HeroService } from './hero.service';
-
-import { HighlightDirective  } from './attribute-directives'; // 引用自定义指令
+// 引用自定义指令
+import { HighlightDirective  } from './attribute-directives'; // 属性型指令
+import { UnlessDirective   } from './unless.directives'; // 结构型指令
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { HighlightDirective  } from './attribute-directives'; // 引用自定义
     HeroDetailComponent ,
     DashboardComponent,
     HeroSearchComponent,
-    HighlightDirective
+    HighlightDirective,
+    UnlessDirective
   ],
   /*
    注册一个HeroService提供商，来告诉注入器如何创建HeroService

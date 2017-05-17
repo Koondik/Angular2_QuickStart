@@ -15,6 +15,8 @@ import { Component } from '@angular/core';
             <p myHighlight highlightColor="color">这里不是别color,所以系统默认使用red</p><!--错误示范-->
             <!--<p myHighlight [highlightColor]="color">Highlighted in orange</p>-->
             <p [myHighlight]="color" defaultColor="violet">Highlighted</p>
+            
+            <p *myUnless="condition">结构型指令</p>
             <!--<my-heroes></my-heroes>-->
             
             <!--路由-->
